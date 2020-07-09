@@ -23,14 +23,14 @@ var mongoose=require("mongoose");
 // mongoose.connect("mongodb://localhost:27017/yelpcamp_v10")
 // mongoose.connect("mongodb+srv://Avinash2609:Avinash@5181@cluster0.qa8fk.mongodb.net/YelpCamp?retryWrites=true&w=majority");
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://Avinash2609:Avinash@5181@cluster0.qa8fk.mongodb.net/YelpCamp?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://Avinash2609:Avinash@5181@cluster0.qa8fk.mongodb.net/YelpCamp?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
 
 
 var flash = require("connect-flash");
@@ -86,3 +86,4 @@ app.listen(process.env.PORT,process.env.IP ,function(){
 // app.listen(3000,function(){
 //     console.log("server has been started");
 // })
+
