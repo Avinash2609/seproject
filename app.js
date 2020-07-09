@@ -16,9 +16,14 @@ var bodyparser=require("body-parser");
 app.use(bodyparser.urlencoded({extended:true}));
 
 var mongoose=require("mongoose");
-mongoose.connect(process.env.DATABASEURL);
-// mongodb+srv://Avinash2609:Avinash@5181@cluster0.qa8fk.mongodb.net/<dbname>?retryWrites=true&w=majority
-// mongodb://localhost:27017/yelpcamp_v11
+// mongoose.connect(process.env.DATABASEURL);
+// mongodb+srv://Avinash2609:Avinash@5181@cluster0.qa8fk.mongodb.net/YelpCamp?retryWrites=true&w=majority
+// mongodb://localhost:27017/yelpcamp_v10
+
+// mongoose.connect("mongodb://localhost:27017/yelpcamp_v10")
+mongoose.connect("mongodb+srv://Avinash2609:Avinash@5181@cluster0.qa8fk.mongodb.net/YelpCamp?retryWrites=true&w=majority");
+
+
 var flash = require("connect-flash");
 app.use(flash());
 
@@ -69,3 +74,6 @@ app.listen(process.env.PORT,process.env.IP ,function(){
     console.log("server has been started");
 })
 
+// app.listen(3000,function(){
+//     console.log("server has been started");
+// })
