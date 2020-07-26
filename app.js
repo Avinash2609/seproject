@@ -16,21 +16,7 @@ var bodyparser=require("body-parser");
 app.use(bodyparser.urlencoded({extended:true}));
 
 var mongoose=require("mongoose");
-// mongoose.connect(process.env.DATABASEURL);
-// mongodb+srv://Avinash2609:Avinash@5181@cluster0.qa8fk.mongodb.net/YelpCamp?retryWrites=true&w=majority
-// mongodb://localhost:27017/yelpcamp_v10
-
-// mongoose.connect("mongodb://localhost:27017/yelpcamp_v10")
-// mongoose.connect("mongodb+srv://Avinash2609:Avinash@5181@cluster0.qa8fk.mongodb.net/YelpCamp?retryWrites=true&w=majority");
-
-// const MongoClient = require('mongodb').MongoClient;
-// const uri = "mongodb+srv://Avinash2609:Avinash@5181@cluster0.qa8fk.mongodb.net/YelpCamp?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
+mongoose.connect(process.env.DATABASEURL);
 
 
 var flash = require("connect-flash");
@@ -87,3 +73,4 @@ app.listen(process.env.PORT,process.env.IP ,function(){
 //     console.log("server has been started");
 // })
 
+// mongo "mongodb+srv://cluster0.qa8fk.mongodb.net/<YelpCamp>" --username Avinash2609
