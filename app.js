@@ -16,8 +16,8 @@ var bodyparser=require("body-parser");
 app.use(bodyparser.urlencoded({extended:true}));
 
 var mongoose=require("mongoose");
-mongoose.connect(process.env.DATABASEURL);
-
+// mongoose.connect(process.env.DATABASEURL);
+mongoose.connect(mongo "mongodb+srv://cluster0.qa8fk.mongodb.net/<YelpCamp>" --username Avinash2609);
 
 var flash = require("connect-flash");
 app.use(flash());
