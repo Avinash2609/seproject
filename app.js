@@ -16,8 +16,8 @@ var bodyparser=require("body-parser");
 app.use(bodyparser.urlencoded({extended:true}));
 
 var mongoose=require("mongoose");
-// mongoose.connect("mongodb+srv://Avinash2609:<Avinash@5181>@cluster0.qa8fk.mongodb.net/<YelpCamp>?retryWrites=true&w=majority");
-// mongoose.connect(process.env.DATABASEURL);
+// mongoose.connect("mongo "mongodb+srv://cluster0.qa8fk.mongodb.net/YelpCamp" --username Avinash2609");
+
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Avinash2609:Avinash@5181@cluster0.qa8fk.mongodb.net/YelpCamp?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
@@ -26,6 +26,7 @@ client.connect(err => {
   // perform actions on the collection object
   client.close();
 });
+
 
 var flash = require("connect-flash");
 app.use(flash());
