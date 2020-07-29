@@ -16,9 +16,10 @@ var bodyparser=require("body-parser");
 app.use(bodyparser.urlencoded({extended:true}));
 
 var mongoose=require("mongoose");
+// mongoose.connect("mongodb+srv://Avinash2609:<Avinash@5181>@cluster0.qa8fk.mongodb.net/<YelpCamp>?retryWrites=true&w=majority");
 // mongoose.connect(process.env.DATABASEURL);
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://Avinash2609:<Avinash@5181>@cluster0.qa8fk.mongodb.net/<YelpCamp>?retryWrites=true&w=majority";
+const uri = "mongodb+srv://Avinash2609:Avinash@5181@cluster0.qa8fk.mongodb.net/YelpCamp?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
