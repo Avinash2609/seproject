@@ -73,9 +73,3 @@ if (port == null || port == "") {
 app.listen(port,function(){
     console.log("server has been started");
 })
-
-// app.listen(3000,function(){
-//     console.log("server has been started");
-// })
-
-// mongo "mongodb+srv://cluster0.qa8fk.mongodb.net/<YelpCamp>" --username Avinash2609
