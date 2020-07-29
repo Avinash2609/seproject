@@ -14,7 +14,7 @@ router.get("/register", function(req,res){
 })
 
 router.post("/register", function(req,res){
-    User.register(new User({username: req.body.username}), req.body.password, function(err, registereduser){
+    User.register(new User({username: req.body.username, password: req.body.password }), req.body.password, function(err, registereduser){
         if(err){
             req.flash("error", err);
             return res.render("auth_files/register");
