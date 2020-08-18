@@ -2,15 +2,62 @@
 
 <div class="container mt-5">
     <div class="container jumbotron">
-        <h1>Editing a <%= campground.name %></h1>
+        <h1>Editing a <%= campground.name %>'s Appointment details</h1>
     </div>
-<form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
+<!-- <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
     <input class="form-control" type="text" name=camp[name] placeholder="Enter name" value="<%= campground.name %>">
     <input class="form-control mt-1" type="text" name=camp[image] placeholder="Enter_url" value="<%= campground.image %>"> 
     <input class="form-control mt-1" type="number" min="0.01" step="0.01" name=camp[price] placeholder="Enter_price" value="<%= campground.price %>">
     <input class="form-control mt-1" type="text" name=camp[description] placeholder="Enter_Description" value="<%= campground.description %>">
     <button class="btn btn-sm btn-success mt-3">Submit</button>
-</form>
+</form> -->
+
+<form action="/campgrounds/<%= campground._id %>?_method=PUT" method="post" role="form" class="php-email-form">
+    <div class="form-row">
+      <div class="col-md-4 form-group">
+        <input type="text" name="campground[name]" value="<%= campground.name %>" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+        <div class="validate"></div>
+      </div>
+      <div class="col-md-4 form-group">
+        <input type="email" class="form-control" name="campground[email]" value="<%= campground.email %>" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+        <div class="validate"></div>
+      </div>
+      <div class="col-md-4 form-group">
+        <input type="tel" class="form-control" name="campground[phone]" value="<%= campground.phone %>" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+        <div class="validate"></div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 form-group">
+        <input type="datetime" name="campground[date]" value="<%= campground.date %>" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+        <div class="validate"></div>
+      </div>
+      <div class="col-md-4 form-group">
+        <select name="campground[slot]" value="<%= campground.slot %>" id="department" class="form-control">
+          <option value="">Select Department</option>
+          <option value="Slot 1">slot 1</option>
+          <option value="Slot 2">slot 2</option>
+          <option value="Slot 3">slot 3</option>
+          <option value="Slot 4">slot 4</option>
+          <option value="Slot 5">slot 5</option>
+          <option value="Slot 6">slot 6</option>
+          <option value="Slot 7">slot 7</option>
+          <option value="Slot 8">slot 8</option>
+          <option value="Slot 9">slot 9</option>
+          <option value="Slot 10">slot 10</option>
+          <option value="Slot 11">slot 11</option>
+          <option value="Slot 12">slot 12</option>
+        </select>
+        <div class="validate"></div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <textarea class="form-control" name="campground[description]" value="<%= campground.description %>" rows="5" placeholder="Message (Optional)"></textarea>
+      <div class="validate"></div>
+    </div>
+    <div class="text-center"><button class="btn-info" type="submit">Make an Appointment</button></div>
+  </form>
 <a href="/campgrounds/<%= campground._id %>" class="btn btn-sm btn-info">Go back</a>
     <%- include("../partials/footer") %>
 </div>

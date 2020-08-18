@@ -1,40 +1,60 @@
 <%- include ("../partials/header") %>
+<section id="appointment" class="appointment section-bg">
+    <div class="container">
 
-<div class="container mt-5">
-    <div class="container jumbotron">
-        <h1>Adding a new Campground</h1>
-        <p>Here, you can publish your own campground</p>
-    </div>
-<form action="/campgrounds" method="POST">
-    <input class="form-control" type="text" name="name" placeholder="Enter name for your campground">
+      <div class="section-title">
+        <h2>Make an Appointment</h2>
+        <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
+      </div>
 
-        <div class="form-inline">
-            <p class="btn btn-secondary m-0 mt-1">Choose an image for your campground: </p>
-        <select class="dropdown show ml-2" name="image">
-
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <option>/pics/ali-diaz-Tx7_T5TZNrY-unsplash.jpg</option>
-                <option>/pics/blake-wisz-TcgASSD5G04-unsplash.jpg</option>
-                <option>/pics/carolus-abi-aG5YyxZUCJg-unsplash.jpg</option>
-                <option>/pics/chang-duong-n1cbiw5wc_I-unsplash.jpg</option>  
-                <option>/pics/chris-holder-uY2UIyO5o5c-unsplash.jpg</option>
-                <option>/pics/chris-schog-EnCaUE4QNOw-unsplash.jpg</option>
-                <option>/pics/david-schultz-f5sdemaT7XE-unsplash.jpg</option>
-                <option>/pics/dino-reichmuth-5Rhl-kSRydQ-unsplash.jpg</option>
-                <option>/pics/jorgen-hendriksen-xNpM3R6rR9A-unsplash.jpg</option>
-                <option>/pics/pawan-sharma-aWZjpucxlgE-unsplash.jpg</option>
-                <option>/pics/randy-fath-9c51S3H8AFs-unsplash.jpg</option>
-                <option>/pics/rishabh-pandoh-m1PFxGQ-5x0-unsplash.jpg</option>
-                <option>/pics/roya-ann-miller-Rdsc2L517iQ-unsplash.jpg</option>
-            </div>
-        </select >
+      <form action="/campgrounds" method="post" role="form" class="php-email-form">
+        <div class="form-row">
+          <div class="col-md-4 form-group">
+            <input type="text" name="campground[name]" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+            <div class="validate"></div>
+          </div>
+          <div class="col-md-4 form-group">
+            <input type="email" class="form-control" name="campground[email]" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+            <div class="validate"></div>
+          </div>
+          <div class="col-md-4 form-group">
+            <input type="tel" class="form-control" name="campground[phone]" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+            <div class="validate"></div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-4 form-group">
+            <input type="datetime-local" name="campground[date]" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+            <div class="validate"></div>
+          </div>
+          <div class="col-md-4 form-group">
+            <select name="campground[slot]" id="department" class="form-control">
+              <option value="">Select Department</option>
+              <option value="Slot 1">slot 1</option>
+              <option value="Slot 2">slot 2</option>
+              <option value="Slot 3">slot 3</option>
+              <option value="Slot 4">slot 4</option>
+              <option value="Slot 5">slot 5</option>
+              <option value="Slot 6">slot 6</option>
+              <option value="Slot 7">slot 7</option>
+              <option value="Slot 8">slot 8</option>
+              <option value="Slot 9">slot 9</option>
+              <option value="Slot 10">slot 10</option>
+              <option value="Slot 11">slot 11</option>
+              <option value="Slot 12">slot 12</option>
+            </select>
+            <div class="validate"></div>
+          </div>
         </div>
 
-    <!-- <input class="form-control mt-1" type="text" name="image" placeholder="You can give a link of any image on internet"> -->
-    <input class="form-control mt-1" type="number" min="0.01" step="0.01" name="price" placeholder="Enter price for your campground">
-    <input class="form-control mt-1" type="text" name="description" placeholder="Enter description for your campground">
-    <button class="btn btn-sm btn-success mt-3">Submit</button>
-</form>
-<a href="/campgrounds" class="btn btn-sm btn-info">Go back</a>
+        <div class="form-group">
+          <textarea class="form-control" name="campground[description]" rows="5" placeholder="Message (Optional)"></textarea>
+          <div class="validate"></div>
+        </div>
+        <div class="text-center"><button class="btn-info" type="submit">Make an Appointment</button></div>
+      </form>
+
+    </div>
+  </section>
     <%- include("../partials/footer") %>
 </div>

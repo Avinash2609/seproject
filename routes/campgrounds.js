@@ -20,19 +20,21 @@ router.get("/campgrounds/new", middleware.isloggedin ,function(req,res){
 
 router.post("/campgrounds", middleware.isloggedin ,function(req,res){
     
-    var author={
+    var myauthor={
         id: req.user.id,
         username: req.user.username
     };
 
-    campground.create({name: req.body.name, image: req.body.image,price: req.body.price ,description: req.body.description, author: author } , function(err,campground){
+    campground.create(req.body.campground , function(err,campground){
         if(err){
             req.flash("error", err);
         } else{
+            campground.author=myauthor;
+            campground.save();
             console.log(campground);
         }
     })
-    req.flash("success", "Successfully campground is created");
+    req.flash("success", "Your appointment request has been sent successfully. Thank you!");
     res.redirect("/campgrounds");
 })
 
