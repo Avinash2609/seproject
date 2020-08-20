@@ -14,9 +14,11 @@ router.get("/campgrounds",function(req,res){
     })
 })
 
+// ==================================================new route
 router.get("/campgrounds/new", middleware.isloggedin ,function(req,res){
     res.render("campgrounds/new");
 })
+
 
 router.post("/campgrounds", middleware.isloggedin ,function(req,res){
     
@@ -25,18 +27,42 @@ router.post("/campgrounds", middleware.isloggedin ,function(req,res){
         username: req.user.username
     };
 
-    campground.create(req.body.campground , function(err,campground){
+    campground.create(req.body.campground , function(err,camp){
         if(err){
             req.flash("error", err);
         } else{
-            campground.author=myauthor;
-            campground.save();
-            console.log(campground);
+            camp.author=myauthor;
+            camp.save();
+            console.log(camp);
+
+            campground.find({},function(err,allcampgrounds){
+                if(err){
+                    req.flash("error", err);
+                } else{
+                    res.render("campgrounds/slot",{camp: camp, allcamps: allcampgrounds});
+                }
+            })
         }
     })
-    req.flash("success", "Your appointment request has been sent successfully. Thank you!");
-    res.redirect("/campgrounds");
 })
+
+router.post("/campgrounds/:id/slot", middleware.isloggedin ,function(req,res){
+    campground.findById(req.params.id, function(err, foundcampground){
+        if(err){
+            req.flash("error", err);
+            res.redirect("/campgrounds");
+        }
+        else{
+            foundcampground.slot=req.body.slot;
+            foundcampground.save();
+            res.redirect("/campgrounds");
+        }
+    })
+    
+    req.flash("success", "Your appointment request has been sent successfully. Thank you!");
+    
+})
+// ===========================================show
 
 router.get("/campgrounds/:id",function(req,res){
     campground.findById(req.params.id).populate("comments").exec(function(err, foundcampground){
@@ -49,6 +75,7 @@ router.get("/campgrounds/:id",function(req,res){
     })
 })
 
+// ==============================================edit
 router.get("/campgrounds/:id/edit", middleware.checkcampownership ,function(req,res){
     campground.findById(req.params.id, function(err, foundcampground){
         if(err){
@@ -62,18 +89,27 @@ router.get("/campgrounds/:id/edit", middleware.checkcampownership ,function(req,
 })
 
 router.put("/campgrounds/:id", middleware.checkcampownership ,function(req,res){
-    campground.findByIdAndUpdate(req.params.id,req.body.camp ,function(err, updatedcampground){
+    campground.findByIdAndUpdate(req.params.id,req.body.campground ,function(err, updatedcampground){
         if(err){
             req.flash("error", err);
             res.redirect("/campgrounds");
         }
         else{
-            req.flash("success", "Successfully campground is updated");
-            res.redirect("/campgrounds");
+            updatedcampground.save();
+            updatedcampground.slot="";
+            campground.find({},function(err,allcampgrounds){
+                if(err){
+                    req.flash("error", err);
+                } else{
+            res.render("campgrounds/slot",{camp: updatedcampground, allcamps: allcampgrounds});
+                }
+            })
         }
     })
 })
 
+
+// ========================================delete
 router.delete("/campgrounds/:id", middleware.checkcampownership ,function(req,res){
     campground.findByIdAndRemove(req.params.id ,function(err){
         if(err){

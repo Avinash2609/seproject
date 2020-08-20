@@ -16,10 +16,12 @@
                     <div class="m-2">
                         <h5>
                             <span class="text-primary"><%= campground.name %></span>
-                            <span class="text-primary float-right"><%= campground.slot %></span>
+                            <span class="text-primary float-right"><%= campground.day %></span>
+
                             
                             <!-- <span class="float-right">$ <%= campground.price %>/night</span> -->
                         </h5>
+                        <p><%= campground.slot %></p>
                         <p><%= campground.description %></p>
                         <p><em>Submitted by: <%= campground.author.username %></em></p>
                         <div>
