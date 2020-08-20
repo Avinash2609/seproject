@@ -1,11 +1,12 @@
 <%- include ("../partials/header") %>
 <script>
-  alert("please, wait for a while");
+ 
   window.onload = function() {
     //considering there aren't any hashes in the urls already
     if(!window.location.hash) {
         //setting window location
         window.location = window.location + '#loaded';
+        alert("please, wait for a while");
         //using reload() method to reload web page
         window.location.reload();
     }
