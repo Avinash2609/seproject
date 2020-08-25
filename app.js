@@ -16,7 +16,7 @@ var bodyparser=require("body-parser");
 app.use(bodyparser.urlencoded({extended:true}));
 
 var mongoose=require("mongoose");
-mongoose.connect("mongodb+srv://Avinash2609:ourproject@cluster0.qa8fk.mongodb.net/Medilab?retryWrites=true&w=majority", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://Avinash2609:urlencoded@cluster0.qa8fk.mongodb.net/Medilab?retryWrites=true&w=majority", {useNewUrlParser: true});
 
 var flash = require("connect-flash");
 app.use(flash());
@@ -66,7 +66,7 @@ app.use(commentroutes);
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 3001;
+  port = 3000;
 }
 
 
