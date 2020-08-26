@@ -15,12 +15,17 @@ app.use(methodoverride("_method"));
 var bodyparser=require("body-parser");
 app.use(bodyparser.urlencoded({extended:true}));
 
+//<<<<<<< HEAD
  var mongoose=require("mongoose");
  //<<<<<<< HEAD
 // mongoose.connect("mongodb+srv://Avinash2609:Avinash@5181@cluster0.qa8fk.mongodb.net/Medilab?retryWrites=true&w=majority", {useNewUrlParser: true});
 // =======
-mongoose.connect("mongodb+srv://Avinash2609:urlencoded@cluster0.qa8fk.mongodb.net/Medilab?retryWrites=true&w=majority", {useNewUrlParser: true});
+//mongoose.connect("mongodb+srv://Avinash2609:urlencoded@cluster0.qa8fk.mongodb.net/Medilab?retryWrites=true&w=majority", {useNewUrlParser: true});
 //>>>>>>> 7fd213666d45abdb8a13e351c5aad7f7433089b1
+//=======
+var mongoose=require("mongoose");
+mongoose.connect("mongodb+srv://Avinash2609:urlencoded@cluster0.qa8fk.mongodb.net/Medilab?retryWrites=true&w=majority", {useNewUrlParser: true});
+//>>>>>>> f3221242fb9faf5c3853fad328027c265a908af7
 
 var flash = require("connect-flash");
 app.use(flash());
